@@ -1,0 +1,1372 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apteka_magas — аптека в Магасе</title>
+<link rel="icon" type="image/jpeg" href="images/logo.jpg">
+<meta name="description" content="Аптека Apteka_magas в Магасе. Более 13 лет заботы о здоровье. Лекарства, витамины iHerb, доставка на дом, онлайн-консультации фармацевта.">
+
+<!-- ============================================================
+     OPEN GRAPH / TWITTER CARD — превью при пересылке ссылки
+     в WhatsApp, Telegram, соцсетях. Когда сайт будет размещён
+     на реальном домене, замените "https://apteka-magas.ru" ниже
+     на настоящий адрес сайта — иначе превью-картинка и ссылка
+     будут вести на неправильный домен.
+     ============================================================ -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Apteka_magas">
+<meta property="og:title" content="Apteka_magas — аптека в Магасе">
+<meta property="og:description" content="Более 13 лет заботы о здоровье. Лекарства, витамины iHerb и турецкие бренды, доставка на дом, онлайн-консультации фармацевта. Ежедневно 9:00–22:00.">
+<meta property="og:image" content="https://apteka-magas.ru/images/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://apteka-magas.ru/">
+<meta property="og:locale" content="ru_RU">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Apteka_magas — аптека в Магасе">
+<meta name="twitter:description" content="Более 13 лет заботы о здоровье. Лекарства, витамины iHerb, доставка на дом, онлайн-консультации фармацевта.">
+<meta name="twitter:image" content="https://apteka-magas.ru/images/og-image.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700;800;900&family=Golos+Text:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  /* ============================================================
+     ==========  РЕДАКТИРУЕМЫЕ ПЕРЕМЕННЫЕ ОФОРМЛЕНИЯ  ============
+     Цвета сайта. Замените hex-коды, чтобы изменить палитру.
+     ============================================================ */
+  :root{
+    --white:      #FFFFFF;
+    --bg-soft:    #F6F2FB;   /* мягкий сиреневый фон секций */
+    --violet-900: #2B1246;   /* тёмный текст / плашки */
+    --violet-700: #6B2FB3;   /* основной фиолетовый бренда */
+    --violet-600: #7E3FCB;
+    --violet-500: #9B5DE5;   /* акцент */
+    --violet-300: #C9AEF0;
+    --violet-150: #EDE1FA;
+    --violet-100: #F3ECFB;
+    --ink:        #241634;
+    --ink-soft:   #5B4E70;
+    --line:       #E6DAF5;
+    --shadow: 0 20px 50px -20px rgba(43,18,70,.25);
+
+    --font-display: "Unbounded", sans-serif;
+    --font-body: "Golos Text", sans-serif;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family: var(--font-body);
+    color: var(--ink);
+    background: var(--white);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  body.intro-lock, body.menu-lock{ overflow:hidden; height:100vh; }
+  img{max-width:100%; display:block;}
+  a{color:inherit; text-decoration:none;}
+  ul{list-style:none;}
+  button{font-family:inherit; cursor:pointer;}
+  section{position:relative;}
+  .wrap{
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:13px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+    color: var(--violet-700);
+    margin-bottom: 14px;
+  }
+  h1,h2,h3{ font-family: var(--font-display); font-weight:600; color:var(--violet-900); line-height:1.08; }
+  h2{ font-size: clamp(28px,4vw,44px); letter-spacing:-.01em; }
+  .section-head{ max-width:640px; margin-bottom:44px; }
+  .section-head p{ color:var(--ink-soft); font-size:17px; margin-top:14px; line-height:1.6; }
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:10px;
+    padding:15px 28px; border-radius:100px; font-weight:700; font-size:15px;
+    border:1px solid transparent; transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+  }
+  .btn-primary{ background: var(--violet-700); color:var(--white); box-shadow: 0 12px 24px -10px rgba(107,47,179,.55);}
+  .btn-primary:hover{ transform: translateY(-2px); background:var(--violet-600); }
+  .btn-ghost{ background:var(--white); color:var(--violet-700); border-color:var(--violet-300); }
+  .btn-ghost:hover{ background:var(--violet-100); transform: translateY(-2px); }
+  .btn-line{ background:transparent; color:var(--violet-900); border-color:var(--violet-900); }
+
+  /* --- Фирменный "плюс" — сигнатурный элемент --- */
+  .plus{ position:relative; width:14px; height:14px; flex:0 0 auto; }
+  .plus::before,.plus::after{
+    content:""; position:absolute; background:currentColor; border-radius:2px;
+  }
+  .plus::before{ left:50%; top:0; width:3px; height:100%; transform:translateX(-50%);}
+  .plus::after{ top:50%; left:0; height:3px; width:100%; transform:translateY(-50%);}
+  .plus-lg{ width:26px; height:26px; }
+  .plus-lg::before{ width:5px; border-radius:3px; }
+  .plus-lg::after{ height:5px; border-radius:3px; }
+
+  .cross-field{
+    position:absolute; inset:0; pointer-events:none; overflow:hidden; z-index:0;
+  }
+  .cross-field span{
+    position:absolute; color:var(--violet-200,#DCC8F5); opacity:.55;
+  }
+
+  /* ================= HEADER ================= */
+  header{
+    position:sticky; top:0; z-index:50;
+    background: rgba(255,255,255,.86);
+    backdrop-filter: blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 0;
+  }
+  .brand{ display:flex; align-items:center; gap:12px; font-family:var(--font-display); font-weight:700; font-size:20px; color:var(--violet-900); }
+  .brand .mark{
+    width:40px; height:40px; border-radius:50%; overflow:hidden; position:relative;
+    box-shadow: 0 0 0 1.5px var(--violet-200,#DCC8F5), 0 4px 10px -4px rgba(43,18,70,.25);
+  }
+  .brand .mark img{ width:100%; height:100%; object-fit:cover; }
+  .brand small{ display:block; font-family:var(--font-body); font-weight:600; font-size:11px; letter-spacing:.06em; color:var(--ink-soft); text-transform:uppercase; }
+
+  .nav-links{ display:flex; align-items:center; gap:30px; font-size:14.5px; font-weight:600; color:var(--ink-soft); }
+  .nav-links a:hover{ color:var(--violet-700); }
+  .nav-cta{ display:flex; align-items:center; gap:14px; }
+  .nav-phone{ font-weight:700; color:var(--violet-900); font-size:15px; }
+  .open-status{ display:flex; align-items:center; gap:7px; font-size:13px; font-weight:700; }
+  .open-status .dot{ width:8px; height:8px; border-radius:50%; background:#2FBF71; box-shadow:0 0 0 3px rgba(47,191,113,.2); }
+  .open-status.closed .dot{ background:#E5484D; box-shadow:0 0 0 3px rgba(229,72,77,.2); }
+  .open-status.open{ color:#1E8F53; }
+  .open-status.closed{ color:#C8353A; }
+  .burger{
+    display:none; width:38px; height:38px; border:none; background:none; cursor:pointer;
+    flex-direction:column; justify-content:center; align-items:center; gap:5px; flex:0 0 auto; padding:0;
+  }
+  .burger span{ width:20px; height:2px; background:var(--violet-900); border-radius:2px; }
+
+  .mobile-menu{
+    position:fixed; inset:0; z-index:80; background:var(--white);
+    padding:26px 28px 40px; transform:translateY(-100%); transition:transform .3s ease;
+    display:flex; flex-direction:column; overflow-y:auto;
+  }
+  .mobile-menu.open{ transform:translateY(0); }
+  .mm-close{
+    align-self:flex-end; width:40px; height:40px; border:none; background:var(--violet-100); color:var(--violet-700);
+    border-radius:50%; display:flex; align-items:center; justify-content:center; margin-bottom:20px;
+  }
+  .mm-links{ display:flex; flex-direction:column; }
+  .mm-links a{
+    padding:17px 2px; font-family:var(--font-display); font-size:19px; font-weight:600;
+    color:var(--violet-900); border-bottom:1px solid var(--line);
+  }
+  .mm-cta{ margin-top:26px; width:100%; }
+  .mm-phone{ display:block; text-align:center; margin-top:16px; font-weight:700; color:var(--violet-700); font-size:15px; }
+
+  @media (max-width:920px){
+    .nav-links{ display:none; }
+    .nav-phone{ display:none; }
+    .burger{ display:flex; }
+  }
+  @media (min-width:921px){
+    .mobile-menu{ display:none; }
+  }
+
+  /* ================= HERO ================= */
+  .hero{
+    position:relative; padding:56px 0 40px; overflow:hidden; background:var(--bg-soft);
+  }
+  .hero-watermark{
+    position:absolute; top:-4px; left:0; right:0; text-align:center;
+    font-family:var(--font-display); font-weight:700; font-size:clamp(30px,9vw,150px);
+    line-height:.86; color:transparent; -webkit-text-stroke:1.5px rgba(107,47,179,.14);
+    letter-spacing:-.01em; z-index:0; pointer-events:none; user-select:none;
+    overflow:hidden; max-width:100%;
+  }
+  .hero-watermark span{ display:block; white-space:nowrap; }
+  .hero-card{
+    position:relative; z-index:1; background:var(--white); border-radius:32px;
+    box-shadow:0 40px 80px -32px rgba(43,18,70,.3); padding:52px 52px 44px; overflow:hidden;
+  }
+  .hero-photo-bg{
+    position:absolute; inset:-5%; z-index:0;
+    background-image: url("images/capsules-bg.jpg");
+    background-size: cover; background-position: center 30%;
+    filter: blur(9px) saturate(0.85);
+    opacity:.22;
+    transform: scale(1.06);
+  }
+  .hero-photo-tint{
+    position:absolute; inset:0; z-index:0;
+    background: linear-gradient(180deg, rgba(255,255,255,.85) 0%, rgba(255,255,255,.94) 60%, #fff 100%);
+  }
+  .hero-tag{
+    position:absolute; z-index:4; color:#fff; font-size:11.5px; font-weight:800;
+    letter-spacing:.08em; padding:9px 18px; border-radius:100px; text-transform:uppercase;
+    box-shadow:0 16px 30px -14px rgba(43,18,70,.55); white-space:nowrap;
+  }
+  .tag-1{ top:36px; left:-18px; transform:rotate(-9deg); background:var(--violet-700); }
+  .tag-2{ bottom:28px; left:-24px; transform:rotate(-6deg); background:var(--violet-500); }
+  .tag-3{ top:46%; right:-26px; transform:rotate(8deg); background:var(--violet-900); }
+  @media (max-width:900px){ .hero-tag{ display:none; } }
+
+  .hero-grid{
+    display:grid; grid-template-columns: 1.05fr .95fr; gap:50px; align-items:center;
+    position:relative; z-index:2;
+  }
+  .badge-years{
+    display:inline-flex; align-items:center; gap:10px;
+    background:var(--white); border:1px solid var(--violet-300); color:var(--violet-700);
+    padding:8px 16px 8px 10px; border-radius:100px; font-weight:700; font-size:13.5px;
+    box-shadow: var(--shadow); margin-bottom:22px;
+  }
+  .badge-years .plus{ background:var(--violet-700); color:#fff; border-radius:50%; width:22px; height:22px; }
+  .badge-years .plus::before,.badge-years .plus::after{ background:#fff; }
+
+  .hero h1{ font-size: clamp(36px,5vw,58px); }
+  .hero h1 em{
+    font-style:normal; color:var(--violet-700); font-weight:700;
+    text-decoration: underline; text-decoration-color: var(--violet-300);
+    text-decoration-thickness: 4px; text-underline-offset: 6px;
+  }
+  .hero .lede{ margin-top:22px; font-size:17.5px; color:var(--ink-soft); max-width:500px; line-height:1.65; }
+  .hero-actions{ display:flex; flex-wrap:wrap; gap:14px; margin-top:34px; }
+
+  .hero-art-wrap{ position:relative; }
+  .hero-art{
+    position:relative; aspect-ratio: 1/1.05; border-radius:28px;
+    background: var(--violet-900);
+    display:flex; align-items:center; justify-content:center;
+    overflow:hidden;
+  }
+  .hero-art .glow{
+    position:absolute; width:320px; height:320px; border-radius:50%;
+    background: radial-gradient(circle, rgba(155,93,229,.55), transparent 70%);
+    filter: blur(10px);
+  }
+  .hero-art .logo-slot{
+    position:relative; z-index:2; width:62%; aspect-ratio:1/1; border-radius:50%;
+    overflow:hidden; box-shadow: 0 25px 60px -18px rgba(0,0,0,.55), 0 0 0 6px rgba(255,255,255,.06);
+  }
+  .hero-art .logo-slot img{ width:100%; height:100%; object-fit:cover; }
+  .hero-cross-deco{ position:absolute; inset:0; z-index:1; }
+  .hero-cross-deco span{ position:absolute; color:rgba(255,255,255,.14); }
+
+  .floating-badge{
+    position:absolute; z-index:5; background:#fff; border-radius:18px; padding:13px 18px;
+    display:flex; align-items:center; gap:12px; box-shadow:var(--shadow); max-width:190px;
+  }
+  .floating-badge .fb-icon{
+    width:36px; height:36px; border-radius:11px; background:var(--violet-100); color:var(--violet-700);
+    display:flex; align-items:center; justify-content:center; flex:0 0 auto;
+  }
+  .floating-badge strong{ display:block; font-family:var(--font-display); font-size:16px; color:var(--violet-900); line-height:1.15; }
+  .floating-badge span{ font-size:11px; color:var(--ink-soft); }
+  .badge-top{ top:-8px; right:-14px; }
+  .badge-bottom{ bottom:14px; left:-22px; }
+
+  .floating-chip{
+    position:absolute; top:18px; left:18px; z-index:5; background:rgba(255,255,255,.95);
+    border-radius:100px; padding:7px 16px 7px 7px; display:flex; align-items:center; gap:9px; box-shadow:var(--shadow);
+    transition:transform .2s ease;
+  }
+  .floating-chip:hover{ transform:translateY(-2px); }
+  .chip-avatar{
+    width:28px; height:28px; border-radius:50%; background:var(--violet-700); color:#fff;
+    display:flex; align-items:center; justify-content:center; font-weight:700; font-size:12px; flex:0 0 auto;
+  }
+  .floating-chip strong{ display:block; font-size:12px; color:var(--violet-900); line-height:1.2; }
+  .floating-chip span{ font-size:10px; color:var(--ink-soft); }
+
+  @media (max-width:900px){
+    .floating-badge, .floating-chip{ display:none; }
+  }
+
+  .hero-stats{
+    position:relative; z-index:2; margin:0 18px; transform:translateY(-28px);
+    background:var(--violet-900); border-radius:24px; padding:30px 36px;
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:20px;
+    box-shadow:0 30px 60px -26px rgba(43,18,70,.5);
+  }
+  .hero-stats div{ text-align:center; flex:1; min-width:130px; }
+  .hero-stats strong{ display:block; font-family:var(--font-display); font-size:clamp(24px,2.8vw,32px); color:#fff; }
+  .hero-stats span{ font-size:12.5px; color:rgba(255,255,255,.65); }
+  @media (max-width:700px){ .hero-stats{ transform:none; margin:24px 0 0; } }
+
+  @media (max-width: 860px){
+    .hero-card{ padding:36px 24px 30px; }
+    .hero-grid{ grid-template-columns:1fr; }
+    .hero-art-wrap{ order:-1; max-width:340px; margin:0 auto; }
+  }
+
+  /* ================= TRUST STRIP ================= */
+  .trust{
+    background: var(--violet-900); color:#fff; padding:22px 0;
+  }
+  .trust .wrap{ display:flex; flex-wrap:wrap; gap:24px; justify-content:space-between; }
+  .trust-item{ display:flex; align-items:center; gap:10px; font-size:14.5px; font-weight:600; color:rgba(255,255,255,.92); }
+  .trust-item .plus{ color:var(--violet-500); }
+
+  /* ================= CATEGORIES ================= */
+  .categories{ padding:100px 0 90px; }
+  .cat-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+  .cat-card{
+    background: var(--white); border:1px solid var(--line); border-radius:20px;
+    padding:30px 26px; transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    overflow:hidden;
+  }
+  .cat-card.has-photo{ padding:0; display:flex; flex-direction:column; }
+  .cat-card.has-photo .cat-photo-wrap{ position:relative; }
+  .cat-card.has-photo .cat-photo{ width:100%; aspect-ratio:16/10; object-fit:cover; display:block; }
+  .cat-card.has-photo .cat-arrow{
+    position:absolute; top:14px; right:14px; width:36px; height:36px; border-radius:50%;
+    background:#fff; color:var(--violet-700); display:flex; align-items:center; justify-content:center;
+    box-shadow:0 10px 22px -8px rgba(43,18,70,.4); transition:transform .25s ease, background .25s ease, color .25s ease;
+  }
+  .cat-card.has-photo:hover .cat-arrow{ background:var(--violet-700); color:#fff; transform:rotate(45deg); }
+  .cat-card.has-photo .cat-body{ padding:26px 26px 30px; }
+  .cat-card.has-photo .cat-icon{ margin-top:-46px; position:relative; z-index:1; background:var(--white); box-shadow:var(--shadow); }
+  .cat-card:hover{ transform:translateY(-6px); box-shadow: var(--shadow); border-color:var(--violet-300); }
+  .cat-icon{
+    width:52px; height:52px; border-radius:14px; background:var(--violet-100);
+    display:flex; align-items:center; justify-content:center; color:var(--violet-700); margin-bottom:20px;
+  }
+  .cat-card h3{ font-size:19px; margin-bottom:10px; }
+  .cat-card p{ color:var(--ink-soft); font-size:14.5px; line-height:1.55; }
+  @media (max-width:860px){ .cat-grid{ grid-template-columns:1fr 1fr; } }
+  @media (max-width:560px){ .cat-grid{ grid-template-columns:1fr; } }
+
+  /* ================= DELIVERY / RX SPLIT ================= */
+  .split{ background:var(--bg-soft); padding:90px 0; }
+  .split-grid{ display:grid; grid-template-columns:1fr 1fr; gap:28px; }
+  .info-card{
+    background:var(--white); border-radius:22px; border:1px solid var(--line); overflow:hidden;
+  }
+  .info-card-inner{ padding:38px; }
+  .info-card .cat-icon{ margin-bottom:22px; }
+  .info-card h3{ font-size:22px; margin-bottom:12px; }
+  .info-card p{ color:var(--ink-soft); font-size:15px; line-height:1.65; margin-bottom:18px; }
+  .info-card ul li{ display:flex; gap:10px; align-items:flex-start; font-size:14.5px; color:var(--ink); margin-bottom:10px; }
+  .info-card ul li .plus{ color:var(--violet-500); margin-top:5px; }
+  .info-photo{ width:100%; aspect-ratio:16/9; object-fit:cover; display:block; }
+  @media (max-width:860px){ .split-grid{ grid-template-columns:1fr; } }
+
+  /* ================= CONSULTATIONS ================= */
+  .consult{ padding:100px 0 90px; }
+  .consult-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+  .consult-card{
+    border-radius:20px; padding:32px 26px; background:var(--violet-900); color:#fff;
+    display:flex; flex-direction:column; gap:16px; position:relative; overflow:hidden;
+  }
+  .consult-card:nth-child(2){ background:var(--violet-700); }
+  .consult-card:nth-child(3){ background:linear-gradient(160deg,var(--violet-700),var(--violet-500)); }
+  .consult-card h3{ color:#fff; font-size:20px; }
+  .consult-card p{ font-size:14.5px; color:rgba(255,255,255,.82); line-height:1.6; flex-grow:1; }
+  .consult-card .btn{ align-self:flex-start; }
+  .consult-card .cat-icon{ background:rgba(255,255,255,.14); color:#fff; }
+  @media (max-width:860px){ .consult-grid{ grid-template-columns:1fr; } }
+
+  /* ================= REVIEWS ================= */
+  .reviews{ background:var(--bg-soft); padding:100px 0; }
+  .reviews-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; align-items:start; }
+  .review-card{
+    background:var(--white); border:1px solid var(--line); border-radius:20px; padding:12px;
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .review-card:hover{ transform:translateY(-4px); box-shadow:var(--shadow); }
+  .review-photo{
+    display:block; width:100%; border-radius:13px; background:#0b0b10;
+  }
+  @media (max-width:860px){ .reviews-grid{ grid-template-columns:1fr; } }
+
+  /* ================= FAQ ================= */
+  .faq{ padding:100px 0; }
+  .faq-list{ max-width:760px; }
+  .faq-item{ border-bottom:1px solid var(--line); }
+  .faq-q{
+    width:100%; display:flex; align-items:center; justify-content:space-between; gap:16px;
+    padding:22px 4px; background:none; border:none; text-align:left;
+    font-family:var(--font-display); font-size:17px; font-weight:600; color:var(--violet-900);
+  }
+  .faq-q .plus{ flex:0 0 auto; color:var(--violet-500); transition:transform .25s ease; }
+  .faq-item.open .faq-q .plus{ transform:rotate(45deg); }
+  .faq-a{ max-height:0; overflow:hidden; transition:max-height .3s ease; }
+  .faq-a p{ padding:0 4px 22px; color:var(--ink-soft); font-size:14.5px; line-height:1.65; max-width:640px; }
+
+  /* ================= CONTACT / FORM ================= */
+  .contact{ padding:100px 0 60px; }
+  .contact-grid{ display:grid; grid-template-columns: .9fr 1.1fr; gap:50px; }
+  .contact-list{ display:flex; flex-direction:column; gap:22px; margin-top:30px; }
+  .contact-row{ display:flex; gap:16px; align-items:flex-start; }
+  .contact-row .cat-icon{ width:44px; height:44px; margin-bottom:0; flex:0 0 auto; }
+  .contact-row strong{ display:block; font-size:15px; color:var(--violet-900); margin-bottom:2px; }
+  .contact-row span, .contact-row a{ font-size:14.5px; color:var(--ink-soft); }
+  .contact-row a:hover{ color:var(--violet-700); }
+  .map-embed{ margin-top:26px; border-radius:18px; overflow:hidden; border:1px solid var(--line); }
+  .map-storefront{ width:100%; max-height:280px; object-fit:cover; display:block; }
+  .map-links{ display:flex; gap:16px; margin-top:12px; font-size:13.5px; font-weight:700; }
+  .map-links a{ color:var(--violet-700); }
+  .map-links a:hover{ text-decoration:underline; }
+  .social-row{ display:flex; gap:12px; margin-top:8px; }
+  .social-btn{
+    width:42px; height:42px; border-radius:12px; background:var(--violet-100); color:var(--violet-700);
+    display:flex; align-items:center; justify-content:center; transition:.2s;
+  }
+  .social-btn:hover{ background:var(--violet-700); color:#fff; transform:translateY(-3px); }
+
+  .form-card{
+    background: var(--bg-soft); border-radius:26px; padding:42px; border:1px solid var(--line);
+  }
+  .form-card h3{ font-size:23px; margin-bottom:8px; }
+  .form-card > p{ color:var(--ink-soft); font-size:14.5px; margin-bottom:26px; }
+  .field{ margin-bottom:18px; }
+  .field label{ display:block; font-size:13px; font-weight:700; color:var(--violet-900); margin-bottom:8px; }
+  .field input, .field textarea, .field select{
+    width:100%; padding:14px 16px; border-radius:12px; border:1px solid var(--violet-300);
+    background:#fff; font-family:inherit; font-size:14.5px; color:var(--ink); outline:none;
+    transition:border-color .15s;
+  }
+  .field input:focus, .field textarea:focus, .field select:focus{ border-color:var(--violet-700); }
+  .field textarea{ resize:vertical; min-height:100px; }
+  .form-foot{ display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; margin-top:6px;}
+  .form-status{ font-size:13px; color:var(--ink-soft); }
+  @media (max-width:900px){ .contact-grid{ grid-template-columns:1fr; } }
+
+  /* ================= LICENSE ================= */
+  .license{
+    max-width:1180px; margin:0 auto 90px; padding:0 28px;
+  }
+  .license-box{
+    border:1px dashed var(--violet-300); border-radius:18px; padding:24px 28px;
+    display:flex; gap:16px; align-items:flex-start; background:var(--violet-100);
+  }
+  .license-box .cat-icon{ background:#fff; margin-bottom:0; }
+  .license-box p{ font-size:13.5px; color:var(--ink-soft); line-height:1.6; }
+  .license-box strong{ color:var(--violet-900); }
+
+  /* ================= FOOTER ================= */
+  footer{ position:relative; background:var(--violet-900); color:rgba(255,255,255,.7); padding:50px 0 26px; overflow:hidden; }
+  .footer-photo-bg{
+    position:absolute; inset:-8%; z-index:0;
+    background-image: url("images/capsules-bg.jpg");
+    background-size: cover; background-position: center 40%;
+    filter: blur(10px) saturate(0.8);
+    opacity:.35;
+    transform: scale(1.08);
+  }
+  .footer-photo-tint{
+    position:absolute; inset:0; z-index:0;
+    background: linear-gradient(180deg, rgba(43,18,70,.75) 0%, rgba(43,18,70,.92) 55%, var(--violet-900) 100%);
+  }
+  footer .wrap{ position:relative; z-index:1; }
+  .foot-top{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:30px; padding-bottom:34px; border-bottom:1px solid rgba(255,255,255,.14); }
+  .foot-brand{ display:flex; align-items:center; gap:12px; color:#fff; font-family:var(--font-display); font-weight:700; font-size:19px; }
+  .foot-links{ display:flex; gap:40px; flex-wrap:wrap; }
+  .foot-links h4{ color:#fff; font-size:13px; text-transform:uppercase; letter-spacing:.06em; margin-bottom:14px; }
+  .foot-links li{ margin-bottom:10px; font-size:14px; }
+  .foot-links a:hover{ color:#fff; }
+  .foot-bottom{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; padding-top:24px; font-size:13px; }
+
+  /* whatsapp floating button */
+  .float-wa{
+    position:fixed; right:22px; bottom:22px; z-index:60;
+    width:58px; height:58px; border-radius:50%; background:#25D366;
+    display:flex; align-items:center; justify-content:center; color:#fff;
+    box-shadow:0 14px 30px -10px rgba(37,211,102,.6);
+    transition:transform .2s;
+  }
+  .float-wa:hover{ transform:scale(1.08); }
+  .float-wa .fw-ring{
+    position:absolute; inset:0; border-radius:50%; pointer-events:none;
+  }
+  .float-wa .fw-icon{ position:relative; pointer-events:none; display:flex; }
+
+  .reveal{ opacity:0; transform:translateY(22px); transition:opacity .7s ease, transform .7s ease; }
+  .reveal.in{ opacity:1; transform:none; }
+  .cat-grid .reveal:nth-child(1), .consult-grid .reveal:nth-child(1), .reviews-grid .reveal:nth-child(1){ transition-delay:0s; }
+  .cat-grid .reveal:nth-child(2), .consult-grid .reveal:nth-child(2), .reviews-grid .reveal:nth-child(2){ transition-delay:.08s; }
+  .cat-grid .reveal:nth-child(3), .consult-grid .reveal:nth-child(3), .reviews-grid .reveal:nth-child(3){ transition-delay:.16s; }
+  .cat-grid .reveal:nth-child(4){ transition-delay:.24s; }
+  .cat-grid .reveal:nth-child(5){ transition-delay:.32s; }
+  .cat-grid .reveal:nth-child(6){ transition-delay:.4s; }
+  .cat-grid .reveal:nth-child(7){ transition-delay:.48s; }
+  .faq-list .reveal:nth-child(1){ transition-delay:0s; }
+  .faq-list .reveal:nth-child(2){ transition-delay:.06s; }
+  .faq-list .reveal:nth-child(3){ transition-delay:.12s; }
+  .faq-list .reveal:nth-child(4){ transition-delay:.18s; }
+  .faq-list .reveal:nth-child(5){ transition-delay:.24s; }
+  .faq-list .reveal:nth-child(6){ transition-delay:.3s; }
+
+  /* ================= АНИМАЦИИ ================= */
+  /* --- Заставка при открытии сайта: падающая и раскрывающаяся капсула --- */
+  .intro-overlay{
+    position:fixed; inset:0; z-index:9999;
+    background:linear-gradient(180deg, #F6F2FB 0%, #EDE1FA 100%);
+    display:flex; align-items:center; justify-content:center; overflow:hidden;
+    transition:opacity .5s ease;
+  }
+  .intro-overlay.intro-fade{ opacity:0; pointer-events:none; }
+  .intro-overlay.intro-gone{ display:none; }
+
+  .intro-capsule{
+    position:relative; width:132px; height:60px;
+    animation: introFall 1s cubic-bezier(.34,1.56,.64,1) both;
+  }
+  .intro-half{
+    position:absolute; left:0; width:132px; height:30px; box-shadow:0 18px 40px -14px rgba(43,18,70,.4);
+  }
+  .intro-top{
+    top:0; border-radius:66px 66px 0 0;
+    background:linear-gradient(135deg,#FDFBFF,#D8C4F5);
+    animation: introOpenTop .8s ease-in both; animation-delay:1.05s;
+  }
+  .intro-bottom{
+    bottom:0; border-radius:0 0 66px 66px;
+    background:linear-gradient(135deg,#B384EA,#6B2FB3);
+    animation: introOpenBottom .8s ease-in both; animation-delay:1.05s;
+  }
+  .intro-shine{
+    position:absolute; top:6px; left:16px; width:34px; height:10px; border-radius:50%;
+    background:rgba(255,255,255,.75); filter:blur(1px);
+    animation: introOpenTop .8s ease-in both; animation-delay:1.05s;
+  }
+  @keyframes introFall{
+    0%{ transform:translateY(-260px) rotate(-30deg); opacity:0; }
+    58%{ transform:translateY(0) rotate(0deg); opacity:1; }
+    72%{ transform:translateY(-10px); }
+    86%{ transform:translateY(0); }
+    100%{ transform:translateY(0); }
+  }
+  @keyframes introOpenTop{
+    0%{ transform:translate(0,0) rotate(0deg); opacity:1; }
+    100%{ transform:translate(-70px,-150px) rotate(-55deg); opacity:0; }
+  }
+  @keyframes introOpenBottom{
+    0%{ transform:translate(0,0) rotate(0deg); opacity:1; }
+    100%{ transform:translate(70px,150px) rotate(55deg); opacity:0; }
+  }
+  .intro-burst{ position:absolute; inset:0; pointer-events:none; }
+  .intro-burst span{
+    position:absolute; top:50%; left:50%; width:8px; height:8px; border-radius:50%;
+    background:var(--violet-500); opacity:0;
+    animation: introBurst .7s ease-out both; animation-delay:1.1s;
+  }
+  @keyframes introBurst{
+    0%{ transform:translate(-50%,-50%) scale(.4); opacity:.9; }
+    100%{ transform:translate(calc(-50% + var(--bx)), calc(-50% + var(--by))) scale(1); opacity:0; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .intro-overlay{ display:none !important; }
+  }
+
+  @keyframes fadeUp{
+    from{ opacity:0; transform:translateY(26px); }
+    to{ opacity:1; transform:none; }
+  }
+  @keyframes floatY{
+    0%,100%{ transform:translateY(0); }
+    50%{ transform:translateY(-14px); }
+  }
+  @keyframes floatSlow{
+    0%,100%{ transform:translateY(0) rotate(0deg); }
+    50%{ transform:translateY(-10px) rotate(8deg); }
+  }
+  @keyframes pulseRing{
+    0%{ box-shadow:0 0 0 0 rgba(37,211,102,.55); }
+    100%{ box-shadow:0 0 0 18px rgba(37,211,102,0); }
+  }
+  @keyframes dotPulse{
+    0%,100%{ box-shadow:0 0 0 0 currentColor; opacity:1; }
+    50%{ box-shadow:0 0 0 5px transparent; opacity:.6; }
+  }
+  @keyframes glowPulse{
+    0%,100%{ transform:scale(1); opacity:.55; }
+    50%{ transform:scale(1.12); opacity:.8; }
+  }
+
+  .hero-anim{ opacity:0; animation:fadeUp .8s ease forwards; }
+  .hero-anim.d1{ animation-delay:.05s; }
+  .hero-anim.d2{ animation-delay:.15s; }
+  .hero-anim.d3{ animation-delay:.28s; }
+  .hero-anim.d4{ animation-delay:.4s; }
+  .hero-anim.d5{ animation-delay:.52s; }
+
+  header{ transition: box-shadow .3s ease, background .3s ease; }
+  header.scrolled{ box-shadow:0 10px 30px -18px rgba(43,18,70,.35); background:rgba(255,255,255,.96); }
+
+  .open-status .dot{ animation:dotPulse 2s ease-in-out infinite; }
+
+  .float-wa .fw-ring{ animation:pulseRing 2.6s ease-out infinite; }
+  .float-wa .fw-icon{ animation:floatY 3.6s ease-in-out infinite; }
+
+  .hero-art .glow{ animation:glowPulse 4.5s ease-in-out infinite; }
+
+  .hero-cross-deco span{ animation:floatSlow 6s ease-in-out infinite; }
+
+  /* ================= ФОНОВАЯ АНИМАЦИЯ: ТАБЛЕТКИ И КАПСУЛЫ ================= */
+  .pill-field{ position:absolute; inset:0; overflow:hidden; pointer-events:none; z-index:0; }
+  .pill-field .pill{ position:absolute; animation:pillDrift ease-in-out infinite; will-change:transform; }
+  .pill-field .pill svg{ display:block; width:100%; height:100%; }
+  .pill-field .bokeh-dot{
+    border-radius:50%; filter:blur(18px); opacity:.4;
+    background: radial-gradient(circle at 35% 30%, rgba(198,150,255,.55), rgba(155,93,229,.12) 60%, rgba(155,93,229,0) 75%);
+  }
+  @keyframes pillDrift{
+    0%,100%{ transform:translateY(0) rotate(0deg); }
+    50%{ transform:translateY(-24px) rotate(14deg); }
+  }
+  /* Контент секций с фоновым полем должен быть поверх него */
+  .hero-grid, .categories .wrap > .section-head, .categories .cat-grid,
+  .split-grid, .consult .wrap > .section-head, .consult-grid,
+  .reviews .wrap > .section-head, .reviews-grid,
+  .faq .wrap > .section-head, .faq-list,
+  .contact .wrap{ position:relative; z-index:1; }
+
+  .plus-lg{ transition: transform .3s ease; }
+  .badge-years:hover .plus{ transform:rotate(90deg); transition:transform .4s ease; }
+
+  @media (prefers-reduced-motion: reduce){
+    *, *::before, *::after{
+      animation-duration: .001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: .001ms !important;
+    }
+    .hero-anim{ opacity:1; }
+  }
+</style>
+</head>
+<body>
+
+<div class="intro-overlay" id="introOverlay" aria-hidden="true">
+  <div class="intro-capsule" id="introCapsule">
+    <div class="intro-half intro-top"></div>
+    <div class="intro-half intro-bottom"></div>
+    <div class="intro-shine"></div>
+  </div>
+  <div class="intro-burst" id="introBurst"></div>
+</div>
+
+<!-- ======================================================================
+     ВЕСЬ ТЕКСТОВЫЙ КОНТЕНТ САЙТА СОБРАН В ОБЪЕКТЕ SITE_CONTENT В КОНЦЕ ФАЙЛА
+     (в теге <script>). Чтобы отредактировать любые тексты, цены, часы
+     работы, акции, ссылки на мессенджеры и т.д. — меняйте значения там,
+     а не в разметке ниже. Разметка ниже отрисовывается автоматически.
+     ====================================================================== -->
+
+<header>
+  <div class="wrap nav">
+    <a href="#top" class="brand">
+      <span class="mark"><img src="images/logo.jpg" alt="Логотип Apteka_magas"></span>
+      <span>Apteka<small>_magas</small></span>
+    </a>
+    <nav class="nav-links">
+      <a href="#categories">Категории</a>
+      <a href="#delivery">Доставка</a>
+      <a href="#consult">Консультации</a>
+      <a href="#reviews">Отзывы</a>
+      <a href="#faq">Вопросы</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+    <div class="nav-cta">
+      <span class="open-status" id="openStatus"><span class="dot"></span><span id="openStatusText">9:00–22:00</span></span>
+      <a class="nav-phone" href="tel:+79287271665">+7 928 727-16-65</a>
+      <a class="btn btn-primary" href="#contacts" style="padding:12px 22px;">Связаться</a>
+      <button class="burger" id="burgerBtn" aria-label="Открыть меню" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mm-close" id="mmClose" aria-label="Закрыть меню">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6 6 18"/></svg>
+  </button>
+  <nav class="mm-links">
+    <a href="#categories">Категории</a>
+    <a href="#delivery">Доставка</a>
+    <a href="#consult">Консультации</a>
+    <a href="#reviews">Отзывы</a>
+    <a href="#faq">Вопросы</a>
+    <a href="#contacts">Контакты</a>
+  </nav>
+  <a class="btn btn-primary mm-cta" href="https://wa.me/79287271665" target="_blank" rel="noopener">Написать в WhatsApp</a>
+  <a class="mm-phone" href="tel:+79287271665">+7 928 727-16-65</a>
+</div>
+
+<section class="hero" id="top">
+  <div class="hero-watermark" aria-hidden="true"><span>АПТЕКА</span><span>МАГАС</span></div>
+  <div class="wrap">
+    <div class="hero-card">
+      <div class="hero-photo-bg"></div>
+      <div class="hero-photo-tint"></div>
+      <div class="pill-field" aria-hidden="true"></div>
+      <div class="hero-cross-deco" id="heroDeco"></div>
+
+      <div class="hero-tag tag-1 hero-anim d1">Аптека</div>
+      <div class="hero-tag tag-2 hero-anim d2">13 лет</div>
+      <div class="hero-tag tag-3 hero-anim d1">Здоровье</div>
+
+      <div class="hero-grid">
+        <div>
+          <div class="badge-years hero-anim d1"><span class="plus"></span> Более 13 лет в Магасе</div>
+          <h1 class="hero-anim d2">Аптека, которой <em>доверяет</em><br>ваша семья</h1>
+          <p class="lede hero-anim d3">Apteka_magas — лекарственные препараты, витамины (включая iHerb и турецкие бренды), детские товары и лечебная косметика. Работаем каждый день без выходных.</p>
+          <div class="hero-actions hero-anim d4">
+            <a class="btn btn-primary" href="https://wa.me/79287271665" target="_blank" rel="noopener">Написать в WhatsApp</a>
+            <a class="btn btn-ghost" href="#categories">Смотреть категории</a>
+          </div>
+        </div>
+        <div class="hero-art-wrap hero-anim d3">
+          <div class="hero-art">
+            <div class="glow"></div>
+            <div class="logo-slot">
+              <img src="images/logo.jpg" alt="Логотип Apteka_magas">
+            </div>
+          </div>
+          <a class="floating-chip" href="https://www.instagram.com/apteka_magas" target="_blank" rel="noopener">
+            <div class="chip-avatar">A</div>
+            <div><strong>apteka_magas</strong><span>Instagram</span></div>
+          </a>
+          <div class="floating-badge badge-top">
+            <div class="fb-icon"><span class="plus"></span></div>
+            <div><strong data-count="13" data-suffix="+">0</strong><span>лет работы</span></div>
+          </div>
+          <div class="floating-badge badge-bottom">
+            <div class="fb-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+            </div>
+            <div><strong>9:00–22:00</strong><span>ежедневно</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-stats">
+      <div><strong data-count="13" data-suffix="+">0</strong><span>лет на рынке Магаса</span></div>
+      <div><strong data-count="7" data-suffix="">0</strong><span>категорий товаров</span></div>
+      <div><strong>9–22</strong><span>часы работы, без выходных</span></div>
+      <div><strong data-count="3" data-suffix="">0</strong><span>онлайн-специалиста на связи</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="trust">
+  <div class="wrap" id="trustStrip"></div>
+</section>
+
+<section class="categories" id="categories">
+  <div class="pill-field" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow"><span class="plus"></span> Каталог</div>
+      <h2>Всё для здоровья в одном месте</h2>
+      <p>Основные категории товаров аптеки Apteka_magas.</p>
+    </div>
+    <div class="cat-grid" id="catGrid"></div>
+  </div>
+</section>
+
+<section class="split" id="delivery">
+  <div class="pill-field" aria-hidden="true"></div>
+  <div class="wrap split-grid">
+    <div class="info-card reveal">
+      <img class="info-photo" id="deliveryPhoto" alt="Доставка до двери">
+      <div class="info-card-inner">
+        <div class="cat-icon" id="iconDelivery"></div>
+        <h3>Доставка до двери</h3>
+        <p>Доставим заказ по адресу — стоимость и время рассчитываются по тарифам такси, в зависимости от расстояния.</p>
+        <ul>
+          <li><span class="plus"></span> Оформление заказа по телефону или в мессенджере</li>
+          <li><span class="plus"></span> Стоимость доставки — по тарифу такси</li>
+          <li><span class="plus"></span> Доставка по Магасу и окрестностям</li>
+        </ul>
+        <a class="btn btn-line" href="https://wa.me/79287271665" target="_blank" rel="noopener">Заказать доставку</a>
+      </div>
+    </div>
+    <div class="info-card reveal">
+      <div class="info-card-inner">
+        <div class="cat-icon" id="iconRx"></div>
+        <h3>Отпуск по рецепту</h3>
+        <p>Часть лекарственных препаратов отпускается строго при наличии рецепта врача — это забота о безопасности вашего здоровья.</p>
+        <ul>
+          <li><span class="plus"></span> Уточняйте наличие препарата у фармацевта</li>
+          <li><span class="plus"></span> Рецепт необходим для рецептурных групп препаратов</li>
+          <li><span class="plus"></span> Наши фармацевты помогут подобрать аналог, если он есть</li>
+        </ul>
+        <a class="btn btn-line" href="#consult">Спросить фармацевта</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="consult" id="consult">
+  <div class="pill-field" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow"><span class="plus"></span> Онлайн</div>
+      <h2>Консультации специалистов</h2>
+      <p>Не уверены, что выбрать? Задайте вопрос специалисту онлайн — в мессенджере, без визита в аптеку.</p>
+    </div>
+    <div class="consult-grid" id="consultGrid"></div>
+  </div>
+</section>
+
+<section class="reviews" id="reviews">
+  <div class="pill-field" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow"><span class="plus"></span> Отзывы</div>
+      <h2>Что говорят наши клиенты</h2>
+      <p>Реальные впечатления посетителей аптеки Apteka_magas.</p>
+    </div>
+    <div class="reviews-grid" id="reviewsGrid"></div>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="pill-field" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow"><span class="plus"></span> Вопросы</div>
+      <h2>Часто спрашивают</h2>
+      <p>Если не нашли ответ на свой вопрос — напишите нам в мессенджере, ответим быстро.</p>
+    </div>
+    <div class="faq-list" id="faqList"></div>
+  </div>
+</section>
+
+<section class="contact" id="contacts">
+  <div class="pill-field" aria-hidden="true"></div>
+  <div class="wrap contact-grid">
+    <div>
+      <div class="eyebrow"><span class="plus"></span> Контакты</div>
+      <h2>Всегда на связи</h2>
+      <p style="color:var(--ink-soft); margin-top:14px; font-size:15px;">Пишите в любой удобный мессенджер — WhatsApp, Telegram или MAX — либо звоните.</p>
+      <div class="contact-list" id="contactList"></div>
+      <div class="social-row" id="socialRow"></div>
+      <div class="map-embed">
+        <img class="map-storefront" src="images/storefront.jpg" alt="Фасад аптеки Apteka_magas — вывеска Аптека №1">
+      </div>
+      <div class="map-links">
+        <a href="https://yandex.ru/maps/?text=Республика%20Ингушетия%2C%20Магас%2C%20проспект%20Зязикова%2C%2054" target="_blank" rel="noopener">Открыть в Яндекс Картах</a>
+        <a href="https://maps.google.com/?q=Республика+Ингушетия,+Магас,+проспект+Зязикова,+54" target="_blank" rel="noopener">Открыть в Google Картах</a>
+      </div>
+    </div>
+
+    <div class="form-card reveal">
+      <h3>Задать вопрос фармацевту</h3>
+      <p>Оставьте заявку — мы свяжемся с вами в WhatsApp или по телефону.</p>
+      <form id="feedbackForm">
+        <div class="field">
+          <label for="fName">Имя</label>
+          <input id="fName" name="name" type="text" placeholder="Как к вам обращаться" required>
+        </div>
+        <div class="field">
+          <label for="fPhone">Телефон</label>
+          <input id="fPhone" name="phone" type="tel" placeholder="+7 900 000-00-00" required>
+        </div>
+        <div class="field">
+          <label for="fTopic">Тема обращения</label>
+          <select id="fTopic" name="topic">
+            <option>Вопрос фармацевту</option>
+            <option>Консультация дерматовенеролога</option>
+            <option>Консультация косметолога</option>
+            <option>Доставка заказа</option>
+            <option>Наличие препарата</option>
+            <option>Другое</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="fMsg">Сообщение</label>
+          <textarea id="fMsg" name="message" placeholder="Опишите ваш вопрос"></textarea>
+        </div>
+        <div class="form-foot">
+          <button type="submit" class="btn btn-primary">Отправить в WhatsApp</button>
+          <span class="form-status">Мы отвечаем ежедневно с 9:00 до 22:00</span>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<div class="license">
+  <div class="license-box">
+    <div class="cat-icon"><span class="plus"></span></div>
+    <p><strong>Реквизиты и лицензия.</strong><br>
+    <span id="licenseText"></span></p>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-photo-bg"></div>
+  <div class="footer-photo-tint"></div>
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <div class="foot-brand"><span class="mark" style="width:32px;height:32px;"><img src="images/logo.jpg" alt="Логотип Apteka_magas"></span> Apteka_magas</div>
+        <p style="max-width:280px; margin-top:14px; font-size:14px; line-height:1.6;">Аптека в Магасе. Более 13 лет заботимся о здоровье жителей города.</p>
+      </div>
+      <div class="foot-links">
+        <div>
+          <h4>Навигация</h4>
+          <ul>
+            <li><a href="#categories">Категории</a></li>
+            <li><a href="#delivery">Доставка и рецепты</a></li>
+            <li><a href="#consult">Консультации</a></li>
+            <li><a href="#reviews">Отзывы</a></li>
+            <li><a href="#faq">Вопросы</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Контакты</h4>
+          <ul id="footContacts"></ul>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="year"></span> Apteka_magas. Все права защищены.</span>
+      <span>Сайт можно редактировать — см. блок SITE_CONTENT в коде страницы.</span>
+    </div>
+  </div>
+</footer>
+
+<a class="float-wa" href="https://wa.me/79287271665" target="_blank" rel="noopener" aria-label="Написать в WhatsApp">
+  <span class="fw-ring"></span>
+  <span class="fw-icon">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12.04 2c-5.5 0-9.96 4.46-9.96 9.96 0 1.76.46 3.48 1.34 5L2 22l5.2-1.36a9.94 9.94 0 0 0 4.84 1.23h.01c5.5 0 9.96-4.46 9.96-9.96S17.55 2 12.04 2Zm5.83 14.24c-.24.68-1.4 1.3-1.93 1.35-.5.05-1.02.24-3.4-.71-2.87-1.15-4.7-4.06-4.85-4.25-.14-.19-1.16-1.55-1.16-2.96 0-1.4.74-2.09 1-2.38.26-.28.57-.35.76-.35h.55c.18 0 .42-.03.65.5.24.55.82 1.9.9 2.04.07.14.12.31.02.5-.1.19-.15.31-.29.48-.14.17-.3.37-.43.5-.14.14-.29.29-.13.57.17.28.75 1.24 1.6 2 .1.1.02.03.4.7.1.14.28.16.5.06.22-.1 1.02-.38 1.94.32.15.09.35.36.35.6z" fill="white"/></svg>
+  </span>
+</a>
+
+<script>
+/* ============================================================================
+   ЗАСТАВКА ПРИ ОТКРЫТИИ САЙТА (падающая и раскрывающаяся капсула).
+   Показывается один раз за сессию браузера; людям с настройкой "уменьшить
+   анимацию" заставка не показывается вовсе (см. также CSS-медиазапрос выше).
+   ============================================================================ */
+(function(){
+  var overlay = document.getElementById("introOverlay");
+  if(!overlay) return;
+
+  var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var shownBefore = false;
+  try{ shownBefore = sessionStorage.getItem("apteka_intro_shown") === "1"; }catch(e){}
+
+  if(reduceMotion || shownBefore){
+    overlay.classList.add("intro-gone");
+    return;
+  }
+
+  document.body.classList.add("intro-lock");
+
+  // Разлетающиеся частицы в момент раскрытия капсулы
+  var burst = document.getElementById("introBurst");
+  var n = 10;
+  for(var i=0; i<n; i++){
+    var s = document.createElement("span");
+    var angle = (Math.PI * 2 * i) / n + Math.random() * 0.4;
+    var dist = 60 + Math.random() * 40;
+    s.style.setProperty("--bx", (Math.cos(angle) * dist).toFixed(1) + "px");
+    s.style.setProperty("--by", (Math.sin(angle) * dist).toFixed(1) + "px");
+    s.style.animationDelay = (1.1 + Math.random() * 0.15) + "s";
+    burst.appendChild(s);
+  }
+
+  // Скрываем заставку по таймеру — не зависит от событий анимации,
+  // поэтому никогда не "застрянет" поверх сайта
+  setTimeout(function(){
+    overlay.classList.add("intro-fade");
+    setTimeout(function(){
+      overlay.classList.add("intro-gone");
+      document.body.classList.remove("intro-lock");
+    }, 520);
+    try{ sessionStorage.setItem("apteka_intro_shown", "1"); }catch(e){}
+  }, 1900);
+})();
+</script>
+
+<script>
+/* ============================================================================
+   SITE_CONTENT — ЕДИНЫЙ ИСТОЧНИК ВСЕХ ТЕКСТОВ И ДАННЫХ САЙТА
+   ----------------------------------------------------------------------------
+   Чтобы изменить текст, телефон, часы работы, ссылки на соцсети, акции,
+   категории товаров или консультации — редактируйте значения ниже.
+   HTML менять не нужно, страница соберётся автоматически при загрузке.
+   ============================================================================ */
+const SITE_CONTENT = {
+
+  contacts: {
+    phoneDisplay: "+7 928 727-16-65",
+    phoneRaw: "79287271665",
+    address: "г. Магас, проспект Зязикова, 54",
+    hours: "Ежедневно, 9:00 – 22:00, без выходных и перерывов",
+    whatsapp: "https://wa.me/79287271665",
+    telegram: "https://t.me/apteka_magas",
+    max: "#",                                 // MAX не используется — кнопка скрыта
+    instagram: "https://www.instagram.com/apteka_magas"
+  },
+
+  // Отпускаем по рецепту — используется в тексте раздела "Доставка/Рецепты" выше.
+
+  categories: [
+    { title: "Лекарственные препараты", text: "Широкий ассортимент безрецептурных и рецептурных препаратов от проверенных производителей.", img: "images/cat-meds.jpg" },
+    { title: "Витамины и БАДы", text: "В том числе продукция iHerb и турецких брендов — для взрослых и детей.", img: "images/cat-vitamins.jpg" },
+    { title: "Детские товары", text: "Гигиена и препараты для самых маленьких.", img: "images/cat-baby.jpg" },
+    { title: "Личная гигиена", text: "Средства для ежедневного ухода за собой и всей семьёй.", img: "images/cat-hygiene.jpg" },
+    { title: "Лечебная косметика", text: "Дерматологическая и уходовая косметика для решения конкретных задач кожи.", img: "images/cat-cosmetics.jpg" },
+    { title: "Оптика", text: "Готовые очки для зрения и контактные линзы.", img: "images/cat-optics.jpg" },
+    { title: "Товары для здоровья", text: "Медицинские изделия и сопутствующие товары на каждый день.", img: "images/cat-health.jpg" }
+  ],
+
+  trustStrip: [
+    "Более 13 лет работы",
+    "Ежедневно 9:00–22:00",
+    "Доставка до двери",
+    "Лицензированная аптека"
+  ],
+
+  consultations: [
+    { role: "Фармацевт", text: "Поможет подобрать препарат, уточнит дозировку и аналоги, ответит на вопросы о совместимости." },
+    { role: "Дерматовенеролог", text: "Онлайн-консультация по вопросам кожи — от подбора ухода до направления на дальнейшее обследование." },
+    { role: "Косметолог", text: "Подберёт лечебную косметику и уходовые средства под ваш тип кожи и задачи." }
+  ],
+
+  // Настоящие отзывы клиентов — показаны как фото переписки в WhatsApp
+  reviews: [
+    { img: "images/review-1.jpg" },
+    { img: "images/review-2.jpg" },
+    { img: "images/review-3.jpg" },
+    { img: "images/review-4.jpg" },
+    { img: "images/review-5.jpg" }
+  ],
+
+  // Раздел с примерами — отредактируйте вопросы и ответы под реальные особенности аптеки
+  faq: [
+    { q: "Как заказать доставку?", a: "Напишите нам в WhatsApp, Telegram или MAX, либо позвоните по телефону — уточним наличие товара и стоимость доставки по тарифу такси." },
+    { q: "Можно ли купить лекарства без рецепта?", a: "Большинство препаратов отпускается свободно. Часть лекарственных средств отпускается только по рецепту врача — это требование законодательства для вашей же безопасности." },
+    { q: "Как оплатить заказ?", a: "Наличными или картой при получении в аптеке, либо у курьера при доставке." },
+    { q: "Есть ли у вас продукция iHerb?", a: "Да, в разделе витаминов и БАДов представлена продукция iHerb и турецких брендов — уточняйте наличие конкретных позиций у фармацевта." },
+    { q: "Как записаться на онлайн-консультацию?", a: "Напишите в WhatsApp с пометкой темы — фармацевт, дерматовенеролог или косметолог — и мы согласуем удобное время консультации." },
+    { q: "Вы работаете в выходные и праздники?", a: "Да, аптека работает ежедневно, без выходных, с 9:00 до 22:00, включая праздничные дни." }
+  ],
+
+  license: "Лицензия на фармацевтическую деятельность № Л042-01173-06/00160135 от 19.11.2013, выдана Министерством здравоохранения Республики Ингушетия. Статус лицензии — действует. Лицензиат: ООО «Кристалл-С», ОГРН 1130608000302, ИНН 0608021967. Адрес осуществления деятельности: Республика Ингушетия, г. Магас, пр-кт И. Зязикова, д. 54."
+};
+
+/* ============================================================================
+   Ниже — код отрисовки. Обычно его редактировать не нужно.
+   ============================================================================ */
+
+// Иконки (SVG, наследуют currentColor)
+const ICONS = {
+  pill: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10.5 20.5 20.5 10.5a5 5 0 1 0-7-7L3.5 13.5a5 5 0 1 0 7 7Z"/><path d="M8 8l8 8"/></svg>`,
+  drop: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2s7 8.5 7 13a7 7 0 1 1-14 0c0-4.5 7-13 7-13Z"/></svg>`,
+  baby: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.5-7 8-7s8 3 8 7"/></svg>`,
+  soap: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="9" width="14" height="12" rx="2"/><path d="M9 9V6a3 3 0 0 1 6 0v3"/></svg>`,
+  leaf: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20c8 0 16-6 16-16C10 4 4 12 4 20Z"/><path d="M4 20 15 9"/></svg>`,
+  cross: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v18M3 12h18"/></svg>`,
+  glasses: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="6.5" cy="14.5" r="3.5"/><circle cx="17.5" cy="14.5" r="3.5"/><path d="M10 14.5h4M3 14.5 2 9.5c-.2-1 .3-2 1.3-2h1.2M21 14.5l1-5c.2-1-.3-2-1.3-2h-1.2"/></svg>`,
+  truck: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7h11v9H3z"/><path d="M14 11h4l3 3v2h-7z"/><circle cx="7" cy="18" r="1.6"/><circle cx="17.5" cy="18" r="1.6"/></svg>`,
+  doc: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4M9 13h6M9 17h6"/></svg>`,
+  phone: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.9v2a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 1h2a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.5 2.1L7 8.7a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.7 2Z"/></svg>`,
+  pin: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s7-7.4 7-12.6A7 7 0 0 0 5 9.4C5 14.6 12 22 12 22Z"/><circle cx="12" cy="9.4" r="2.4"/></svg>`,
+  clock: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>`,
+  send: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m22 2-9.8 20-3.4-8.6L2 10Z"/></svg>`,
+  wa: `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.5 0-9.96 4.46-9.96 9.96 0 1.76.46 3.48 1.34 5L2 22l5.2-1.36a9.94 9.94 0 0 0 4.84 1.23h.01c5.5 0 9.96-4.46 9.96-9.96S17.55 2 12.04 2Z"/></svg>`,
+  tg: `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M21 3 2 10.6l6 2.1L10.5 19l3.2-3.6L18.8 19 21 3Z"/></svg>`,
+  ig: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>`,
+  max: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 8l9 6 9-6"/></svg>`
+};
+const CAT_ICONS = ["pill","drop","baby","soap","leaf","glasses","cross"];
+
+function el(html){ const t = document.createElement("template"); t.innerHTML = html.trim(); return t.content.firstElementChild; }
+
+// Категории
+const catGrid = document.getElementById("catGrid");
+SITE_CONTENT.categories.forEach((c,i)=>{
+  if(c.img){
+    catGrid.appendChild(el(`
+      <div class="cat-card has-photo reveal">
+        <div class="cat-photo-wrap">
+          <img class="cat-photo" src="${c.img}" alt="${c.title}">
+          <a class="cat-arrow" href="${SITE_CONTENT.contacts.whatsapp}?text=${encodeURIComponent('Здравствуйте! Подскажите, пожалуйста, что есть в наличии из раздела «' + c.title + '»')}" target="_blank" rel="noopener" aria-label="Спросить про ${c.title} в WhatsApp">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17 17 7M9 7h8v8"/></svg>
+          </a>
+        </div>
+        <div class="cat-body">
+          <div class="cat-icon">${ICONS[CAT_ICONS[i % CAT_ICONS.length]]}</div>
+          <h3>${c.title}</h3>
+          <p>${c.text}</p>
+        </div>
+      </div>`));
+  } else {
+    catGrid.appendChild(el(`
+      <div class="cat-card reveal">
+        <div class="cat-icon">${ICONS[CAT_ICONS[i % CAT_ICONS.length]]}</div>
+        <h3>${c.title}</h3>
+        <p>${c.text}</p>
+      </div>`));
+  }
+});
+
+// Trust strip
+const trustStrip = document.getElementById("trustStrip");
+SITE_CONTENT.trustStrip.forEach(t=>{
+  trustStrip.appendChild(el(`<div class="trust-item"><span class="plus"></span>${t}</div>`));
+});
+
+// Иконки для карточек доставки/рецепта
+document.getElementById("iconDelivery").innerHTML = ICONS.truck;
+document.getElementById("deliveryPhoto").src = "images/delivery.jpg";
+document.getElementById("iconRx").innerHTML = ICONS.doc;
+
+// Консультации
+const consultGrid = document.getElementById("consultGrid");
+const consultIcons = ["cross","drop","leaf"];
+SITE_CONTENT.consultations.forEach((c,i)=>{
+  consultGrid.appendChild(el(`
+    <div class="consult-card reveal">
+      <div class="cat-icon">${ICONS[consultIcons[i % consultIcons.length]]}</div>
+      <h3>${c.role}</h3>
+      <p>${c.text}</p>
+      <a class="btn btn-ghost" style="background:rgba(255,255,255,.14); color:#fff; border-color:rgba(255,255,255,.3);"
+         href="${SITE_CONTENT.contacts.whatsapp}?text=${encodeURIComponent('Здравствуйте! Хотел(а) бы получить онлайн-консультацию: ' + c.role.toLowerCase())}" target="_blank" rel="noopener">Задать вопрос</a>
+    </div>`));
+});
+
+// Отзывы — показаны как фото переписки в WhatsApp
+const reviewsGrid = document.getElementById("reviewsGrid");
+SITE_CONTENT.reviews.forEach((r,i)=>{
+  reviewsGrid.appendChild(el(`
+    <div class="review-card reveal">
+      <img class="review-photo" src="${r.img}" alt="Отзыв клиента аптеки Apteka_magas из переписки в WhatsApp" loading="lazy">
+    </div>`));
+});
+
+// FAQ
+const faqList = document.getElementById("faqList");
+SITE_CONTENT.faq.forEach((f,i)=>{
+  const item = el(`
+    <div class="faq-item reveal">
+      <button class="faq-q" type="button">${f.q}<span class="plus"></span></button>
+      <div class="faq-a"><p>${f.a}</p></div>
+    </div>`);
+  const btn = item.querySelector(".faq-q");
+  const answer = item.querySelector(".faq-a");
+  btn.addEventListener("click", ()=>{
+    const isOpen = item.classList.contains("open");
+    faqList.querySelectorAll(".faq-item.open").forEach(o=>{
+      o.classList.remove("open");
+      o.querySelector(".faq-a").style.maxHeight = null;
+    });
+    if(!isOpen){
+      item.classList.add("open");
+      answer.style.maxHeight = answer.scrollHeight + "px";
+    }
+  });
+  faqList.appendChild(item);
+});
+
+// Индикатор "Открыто сейчас"
+(function(){
+  const el2 = document.getElementById("openStatus");
+  const txt = document.getElementById("openStatusText");
+  const hour = new Date().getHours();
+  const isOpen = hour >= 9 && hour < 22;
+  el2.classList.add(isOpen ? "open" : "closed");
+  txt.textContent = isOpen ? "Открыто сейчас" : "Закрыто · 9:00–22:00";
+})();
+
+// Контакты
+const c = SITE_CONTENT.contacts;
+document.getElementById("contactList").innerHTML = `
+  <div class="contact-row"><div class="cat-icon" style="width:44px;height:44px;">${ICONS.pin}</div><div><strong>Адрес</strong><span>${c.address}</span></div></div>
+  <div class="contact-row"><div class="cat-icon" style="width:44px;height:44px;">${ICONS.phone}</div><div><strong>Телефон</strong><br><a href="tel:+${c.phoneRaw}">${c.phoneDisplay}</a></div></div>
+  <div class="contact-row"><div class="cat-icon" style="width:44px;height:44px;">${ICONS.clock}</div><div><strong>Часы работы</strong><span>${c.hours}</span></div></div>
+`;
+document.getElementById("socialRow").innerHTML = `
+  <a class="social-btn" href="${c.whatsapp}" target="_blank" rel="noopener" aria-label="WhatsApp">${ICONS.wa}</a>
+  <a class="social-btn" href="${c.telegram}" target="_blank" rel="noopener" aria-label="Telegram">${ICONS.tg}</a>
+  ${c.max && c.max !== "#" ? `<a class="social-btn" href="${c.max}" target="_blank" rel="noopener" aria-label="MAX">${ICONS.max}</a>` : ""}
+  ${c.instagram && c.instagram !== "#" ? `<a class="social-btn" href="${c.instagram}" target="_blank" rel="noopener" aria-label="Instagram">${ICONS.ig}</a>` : ""}
+`;
+document.getElementById("footContacts").innerHTML = `
+  <li>${c.address}</li>
+  <li><a href="tel:+${c.phoneRaw}">${c.phoneDisplay}</a></li>
+  <li>${c.hours}</li>
+`;
+
+document.getElementById("licenseText").textContent = SITE_CONTENT.license;
+
+document.getElementById("year").textContent = new Date().getFullYear();
+
+// Форма обратной связи -> отправка сообщением в WhatsApp
+document.getElementById("feedbackForm").addEventListener("submit", function(e){
+  e.preventDefault();
+  const data = new FormData(this);
+  const text = `Здравствуйте! Обращение с сайта Apteka_magas.%0A` +
+    `Имя: ${encodeURIComponent(data.get("name"))}%0A` +
+    `Телефон: ${encodeURIComponent(data.get("phone"))}%0A` +
+    `Тема: ${encodeURIComponent(data.get("topic"))}%0A` +
+    `Сообщение: ${encodeURIComponent(data.get("message") || "—")}`;
+  window.open(`${SITE_CONTENT.contacts.whatsapp}?text=${text}`, "_blank");
+});
+
+// Декоративное поле плюсов в hero (сигнатурный элемент бренда)
+const deco = document.getElementById("heroDeco");
+const positions = [[6,10],[88,14],[16,72],[94,64],[48,4],[70,88],[4,45],[36,92]];
+positions.forEach(([x,y],i)=>{
+  const size = 10 + (i%3)*6;
+  const s = document.createElement("span");
+  s.style.left = x+"%"; s.style.top = y+"%"; s.style.width=size+"px"; s.style.height=size+"px";
+  s.style.color = "#C9AEF0"; s.style.opacity = .35;
+  s.style.animationDelay = (i*0.35)+"s";
+  s.innerHTML = `<svg viewBox="0 0 24 24" width="${size}" height="${size}"><path d="M12 3v18M3 12h18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>`;
+  deco.appendChild(s);
+});
+
+// Фоновая анимация: таблетки и капсулы — стеклянный стиль с бликами и лёгким размытием
+(function(){
+  let uid = 0;
+
+  function capsuleSVG(){
+    uid++;
+    const gA = "capA" + uid, gB = "capB" + uid;
+    return `<svg viewBox="0 0 40 20">
+      <defs>
+        <linearGradient id="${gA}" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#FDFBFF"/>
+          <stop offset="100%" stop-color="#D8C4F5"/>
+        </linearGradient>
+        <linearGradient id="${gB}" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#B384EA"/>
+          <stop offset="100%" stop-color="#6B2FB3"/>
+        </linearGradient>
+      </defs>
+      <rect x="0.5" y="0.5" width="39" height="19" rx="9.5" fill="url(#${gA})" stroke="#C9AEF0" stroke-width="0.6"/>
+      <path d="M20 0.5h9.5a9.5 9.5 0 0 1 0 19H20z" fill="url(#${gB})"/>
+      <ellipse cx="9" cy="5.5" rx="5.5" ry="1.8" fill="#fff" opacity=".65"/>
+      <ellipse cx="27" cy="5.5" rx="4" ry="1.3" fill="#fff" opacity=".4"/>
+    </svg>`;
+  }
+  function tabletSVG(){
+    uid++;
+    const g = "tab" + uid;
+    return `<svg viewBox="0 0 24 24">
+      <defs>
+        <radialGradient id="${g}" cx="35%" cy="30%" r="75%">
+          <stop offset="0%" stop-color="#FDFBFF"/>
+          <stop offset="55%" stop-color="#D8C4F5"/>
+          <stop offset="100%" stop-color="#9B5DE5"/>
+        </radialGradient>
+      </defs>
+      <circle cx="12" cy="12" r="10.5" fill="url(#${g})" stroke="#C9AEF0" stroke-width="0.6"/>
+      <path d="M3 12h18" stroke="#6B2FB3" stroke-width="1.1" opacity=".6"/>
+      <ellipse cx="9" cy="8" rx="3.4" ry="2" fill="#fff" opacity=".55"/>
+    </svg>`;
+  }
+  function rand(min, max){ return min + Math.random() * (max - min); }
+
+  document.querySelectorAll(".pill-field").forEach(field=>{
+    const count = 6;
+    for(let i=0; i<count; i++){
+      const pill = document.createElement("div");
+      pill.className = "pill";
+      const size = rand(22, 46);
+      const isCapsule = Math.random() < 0.55;
+      const blurAmount = Math.random() < 0.45 ? rand(1.5, 4).toFixed(1) : 0;
+      pill.style.width = size + "px";
+      pill.style.height = (isCapsule ? size / 2 : size) + "px";
+      pill.style.left = rand(2, 90) + "%";
+      pill.style.top = rand(4, 88) + "%";
+      pill.style.opacity = rand(0.18, 0.34).toFixed(2);
+      pill.style.animationDuration = rand(7, 13) + "s";
+      pill.style.animationDelay = (-rand(0, 10)) + "s";
+      if(blurAmount) pill.style.filter = `blur(${blurAmount}px)`;
+      pill.innerHTML = isCapsule ? capsuleSVG() : tabletSVG();
+      field.appendChild(pill);
+    }
+    // Мягкие цветные пятна боке для эффекта глубины
+    const bokehCount = 3;
+    for(let i=0; i<bokehCount; i++){
+      const b = document.createElement("div");
+      b.className = "pill bokeh-dot";
+      const size = rand(50, 110);
+      b.style.width = size + "px";
+      b.style.height = size + "px";
+      b.style.left = rand(0, 92) + "%";
+      b.style.top = rand(0, 85) + "%";
+      b.style.animationDuration = rand(9, 15) + "s";
+      b.style.animationDelay = (-rand(0, 10)) + "s";
+      field.appendChild(b);
+    }
+  });
+})();
+
+// Мобильное меню
+(function(){
+  var burgerBtn = document.getElementById("burgerBtn");
+  var mobileMenu = document.getElementById("mobileMenu");
+  var mmClose = document.getElementById("mmClose");
+  if(!burgerBtn || !mobileMenu) return;
+
+  function openMenu(){
+    mobileMenu.classList.add("open");
+    document.body.classList.add("menu-lock");
+    burgerBtn.setAttribute("aria-expanded", "true");
+  }
+  function closeMenu(){
+    mobileMenu.classList.remove("open");
+    document.body.classList.remove("menu-lock");
+    burgerBtn.setAttribute("aria-expanded", "false");
+  }
+  burgerBtn.addEventListener("click", function(){
+    if(mobileMenu.classList.contains("open")) closeMenu(); else openMenu();
+  });
+  if(mmClose) mmClose.addEventListener("click", closeMenu);
+  mobileMenu.querySelectorAll("a").forEach(function(a){
+    a.addEventListener("click", closeMenu);
+  });
+})();
+
+// Тень у шапки при прокрутке страницы
+const headerEl = document.querySelector("header");
+window.addEventListener("scroll", ()=>{
+  headerEl.classList.toggle("scrolled", window.scrollY > 12);
+}, { passive:true });
+
+// Анимация счётчика "13+ лет работы" при появлении блока
+const counterEls = document.querySelectorAll("[data-count]");
+const counterIo = new IntersectionObserver((entries)=>{
+  entries.forEach(en=>{
+    if(en.isIntersecting){
+      const elx = en.target;
+      const target = parseInt(elx.dataset.count, 10);
+      const suffix = elx.dataset.suffix || "";
+      const duration = 900;
+      const start = performance.now();
+      function step(now){
+        const progress = Math.min(1, (now - start) / duration);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        elx.textContent = Math.round(eased * target) + suffix;
+        if(progress < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+      counterIo.unobserve(elx);
+    }
+  });
+}, { threshold:.4 });
+counterEls.forEach(elx=>counterIo.observe(elx));
+
+// Reveal on scroll
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add("in"); io.unobserve(en.target); } });
+},{threshold:.15});
+document.querySelectorAll(".reveal").forEach(elm=>io.observe(elm));
+</script>
+</body>
+</html>
